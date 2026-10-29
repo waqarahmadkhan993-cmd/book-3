@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookEase | Service Booking</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#home" class="logo">Book<span>Ease</span></a>
+
+    <button id="menuToggle" class="menu-toggle"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav id="navbar" class="navbar">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#booking">Book Now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <p class="eyebrow">SIMPLE. SMART. CONVENIENT.</p>
+        <h1>Book your next service <span>with ease.</span></h1>
+        <p class="hero-text">
+          Explore our services, choose your preferred time,
+          and complete your booking in a few simple steps.
+        </p>
+        <a href="#services" class="button">Explore Services</a>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-symbol">✓</div>
+        <h2>Your time matters.</h2>
+        <p>Find a service that fits your schedule.</p>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <p class="eyebrow">OUR SERVICES</p>
+      <h2>Explore Services</h2>
+      <p class="muted">Choose a service that matches your needs.</p>
+
+      <div class="filter-bar">
+        <label for="categoryFilter">Filter by category:</label>
+        <select id="categoryFilter">
+          <option value="all">All Services</option>
+          <option value="design">Design</option>
+          <option value="technology">Technology</option>
+          <option value="consulting">Consulting</option>
+        </select>
+      </div>
+
+      <p id="resultsCount" class="muted" aria-live="polite"></p>
+
+      <div id="serviceList" class="service-grid">
+        <article class="service-card" data-category="design">
+          <div class="service-icon">✦</div>
+          <h3>Graphic Design</h3>
+          <p>Creative graphics for your brand and social media.</p>
+          <div class="card-bottom">
+            <strong>PKR 2,000</strong>
+            <button class="select-service" data-service="Graphic Design">
+              Choose
+            </button>
+          </div>
+        </article>
+
+        <article class="service-card" data-category="technology">
+          <div class="service-icon">⌘</div>
+          <h3>Website Development</h3>
+          <p>Modern, responsive websites for personal projects.</p>
+          <div class="card-bottom">
+            <strong>PKR 5,000</strong>
+            <button class="select-service"
+              data-service="Website Development">Choose</button>
+          </div>
+        </article>
+
+        <article class="service-card" data-category="technology">
+          <div class="service-icon">✧</div>
+          <h3>AI Consultation</h3>
+          <p>Explore AI tools and creative digital workflows.</p>
+          <div class="card-bottom">
+            <strong>PKR 1,500</strong>
+            <button class="select-service"
+              data-service="AI Consultation">Choose</button>
+          </div>
+        </article>
+
+        <article class="service-card" data-category="consulting">
+          <div class="service-icon">◎</div>
+          <h3>Digital Consultation</h3>
+          <p>Discuss your ideas and plan your digital project.</p>
+          <div class="card-bottom">
+            <strong>PKR 1,000</strong>
+            <button class="select-service"
+              data-service="Digital Consultation">Choose</button>
+          </div>
+        </article>
+      </div>
+
+      <p id="emptyMessage" class="empty-message" hidden>
+        No services found in this category. Please choose another category.
+      </p>
+    </section>
+
+    <section class="section booking-section" id="booking">
+      <p class="eyebrow">RESERVE YOUR SLOT</p>
+      <h2>Book a Service</h2>
+      <p class="muted">
+        Fill in your details to simulate a booking.
+      </p>
+
+      <form id="bookingForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName"
+              placeholder="Enter your full name" autocomplete="name"
+              required>
+            <small class="error" id="nameError"></small>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email"
+              placeholder="name@example.com" autocomplete="email"
+              required>
+            <small class="error" id="emailError"></small>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone"
+              placeholder="03XXXXXXXXX" autocomplete="tel"
+              required>
+            <small class="error" id="phoneError"></small>
+          </div>
+
+          <div class="field">
+            <label for="service">Select Service *</label>
+            <select id="service" name="service" required>
+              <option value="">Choose a service</option>
+              <option>Graphic Design</option>
+              <option>Website Development</option>
+              <option>AI Consultation</option>
+              <option>Digital Consultation</option>
+            </select>
+            <small class="error" id="serviceError"></small>
+          </div>
+
+          <div class="field">
+            <label for="bookingDate">Preferred Date *</label>
+            <input type="date" id="bookingDate" name="bookingDate"
+              required>
+            <small class="error" id="dateError"></small>
+          </div>
+
+          <div class="field">
+            <label for="bookingTime">Preferred Time *</label>
+            <select id="bookingTime" name="bookingTime" required>
+              <option value="">Choose a time</option>
+              <option value="09:00">09:00 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="14:00">02:00 PM</option>
+              <option value="15:00">03:00 PM</option>
+              <option value="16:00">04:00 PM</option>
+            </select>
+            <small class="error" id="timeError"></small>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Additional Notes (Optional)</label>
+          <textarea id="notes" name="notes" rows="4"
+            placeholder="Tell us about your requirements"></textarea>
+        </div>
+
+        <button type="submit" class="button submit-button">
+          Confirm Booking
+        </button>
+
+        <p id="formStatus" class="form-status"
+          aria-live="polite" tabindex="-1"></p>
+      </form>
+
+      <section id="confirmation" class="confirmation"
+        aria-live="polite" hidden>
+        <div class="success-icon">✓</div>
+        <h3>Booking Request Confirmed!</h3>
+        <p id="confirmationDetails"></p>
+        <p class="notice">
+          This is a simulated confirmation for your internship project.
+          No real reservation has been created.
+        </p>
+        <button type="button" id="newBooking" class="button">
+          Make Another Booking
+        </button>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#home" class="logo">Book<span>Ease</span></a>
+    <p>Week 01 Frontend Development Project</p>
+    <p>© <span id="year"></span> BookEase. Demo project.</p>
+  </footer>
+
+</body>
+</html>
